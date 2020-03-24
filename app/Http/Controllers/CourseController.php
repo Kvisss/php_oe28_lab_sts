@@ -20,27 +20,32 @@ class CourseController extends Controller
 
     public function create()
     {
-        //
+        return view('admin.courses.add-form');
     }
 
 
     public function store(CourseRequest $request)
     {
-        $course = Course::create([
+        Course::create([
             'name' => $request->name,
             'description' => $request->description,
-            'image' => $request->image,
+            'image' => config('constant.image.null'),
             'creator_id' => Auth::user()->id,
             'time' => $request->time,
         ]);
 
-        return view('admin.index');
+        return redirect()->route('courses.index');
     }
 
 
     public function show($id)
     {
-        //
+        $courses = Course::where('id', $id)->first();
+        if ($courses) {
+            return view('admin.courses.view-detail', compact('courses'));
+        } else {
+            return null;
+        }
     }
 
 
@@ -71,8 +76,7 @@ class CourseController extends Controller
     }
 
 
-    public
-    function destroy($id)
+    public function destroy($id)
     {
         Course::findOrFail($id)
             ->delete();

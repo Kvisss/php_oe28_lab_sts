@@ -40,6 +40,8 @@ return [
     'status_active' => 'Đang học',
     'status_done' => 'Kết thúc',
     'save' => 'Lưu',
-    'edit_course' => 'Sửa khóa học'
+    'edit_course' => 'Sửa khóa học',
+    'course_image' => 'Ảnh khóa học',
+    'create_new_course' => 'Tạo khóa học mới',
 
 ];

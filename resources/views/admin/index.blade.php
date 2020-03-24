@@ -3,9 +3,12 @@
 @section('title', 'list')
 
 @section('content-header')
-    {{ __('messages.list_course')  }}
+    {{ __('messages.list_course')}}
 @stop
 @section('content')
+    <a href="{{route('courses.create')}}">
+        {{__('messages.create_new_course')}}
+    </a>
     <table id="example" class="table table-striped table-bordered">
         <thead>
         <tr>
@@ -24,7 +27,7 @@
                 <td>{{$value->time}}</td>
                 <td>{{$value->created_at}}</td>
                 <td>
-                    <a href="#" class="btn btn-sm btn-success"><i class="fas fa-eye"></i></a>
+                    <a href="{{route('courses.show', $value->id)}}" class="btn btn-sm btn-success"><i class="fas fa-eye"></i></a>
                     <a href="{{route('courses.edit', $value->id)}}" class="btn btn-sm btn-primary"><i class="fas fa-edit"></i></a>
                     <form action="{{route('courses.destroy', $value->id)}}" method="post">
                         @csrf
