@@ -19,4 +19,13 @@ return [
         'null' => 0,
     ],
 
+    /*
+    | Status of user in course
+    */
+
+    'status' => [
+        'active' => 1,
+        'inactive' => 0,
+
+    ],
 ];

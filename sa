@@ -1,0 +1,20 @@
+[33mdf9ec33[m[33m ([m[1;36mHEAD -> [m[1;32mview_detail_course[m[33m)[m add course
+[33m41aa689[m[33m ([m[1;31morigin/view_detail_course[m[33m, [m[1;32madd_course[m[33m)[m view detail course
+[33me14cadb[m[33m ([m[1;31morigin/crud_course[m[33m, [m[1;32mcrud_course[m[33m)[m crud courses
+[33m1534d34[m[33m ([m[1;31msun/master[m[33m, [m[1;32mmaster[m[33m, [m[1;32mcrud_subject[m[33m)[m Merge pull request #9 from haiphung1/list_course
+[33m534ae69[m list course, detail course
+[33m00cc8cd[m[33m ([m[1;32mcrud_task_user[m[33m)[m Merge pull request #6 from Kvisss/task/22190
+[33m1c2413b[m[33m ([m[1;31morigin/task/22190[m[33m, [m[1;32mtask/22190[m[33m)[m fix login
+[33m54bfaea[m[33m ([m[1;32mtask/22188[m[33m)[m Merge pull request #8 from haiphung1/layout_admin
+[33md40d2bc[m layout admin
+[33m474b5d9[m Merge pull request #7 from Kvisss/task/22170
+[33ma2166ea[m[33m ([m[1;31morigin/task/22170[m[33m, [m[1;32mtask/22170[m[33m)[m task/22170
+[33ma357c06[m Merge pull request #5 from haiphung1/layout_client
+[33m3f02ca4[m layout client
+[33md022dae[m Merge pull request #4 from Kvisss/task/22190
+[33mf5b8b43[m task/22190, create models file
+[33m223f170[m Merge pull request #2 from Kvisss/task/22166
+[33md246ca3[m[33m ([m[1;31morigin/task/22166[m[33m, [m[1;32mtask/22166[m[33m)[m task/22166, migrations
+[33m1b112f5[m Merge pull request #1 from haiphung1/init_project
+[33m679bda5[m init project
+[33mad63e18[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m Initial commit

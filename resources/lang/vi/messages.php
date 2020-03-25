@@ -43,5 +43,14 @@ return [
     'edit_course' => 'Sửa khóa học',
     'course_image' => 'Ảnh khóa học',
     'create_new_course' => 'Tạo khóa học mới',
+    'user_of_course' => 'Thành viên khóa học',
+    'full_name' => 'Họ tên',
+    'action_active' => 'Kích hoạt',
+    'action_deactive' => 'Hủy kích hoạt',
+    'list_trainee' => 'Danh sách học viên',
+    'create_subject' => 'Thêm bài giảng',
+    'title_subject' => 'Tên bài giảng',
+    'list_subject' => 'Danh sách bài giảng',
+    
 
 ];

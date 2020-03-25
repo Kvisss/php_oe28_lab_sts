@@ -18,6 +18,9 @@ Route::group(['prefix' => 'admincp'], function () {
 
     Route::resource('courses', 'CourseController');
 
+    Route::resource('courseuser', 'AdminController\CourseUserController');
+
+    Route::resource('subjects', 'AdminController\SubjectController');
 });
 
 Route::get('/', 'Auth\LoginController@index')->name('indexLogin');
