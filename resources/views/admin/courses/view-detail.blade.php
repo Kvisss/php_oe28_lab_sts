@@ -13,18 +13,16 @@
                     <div class="card-body">
                         <div class="form-group">
                             <label>{{ __('messages.name_course') }}</label>
-                            <input name="name" readonly type="text" class="form-control" placeholder="{{ __('messages.name_course') }}" value="{{$courses->name}}">
+                            <input name="name" readonly type="text" class="form-control" placeholder="{{ __('messages.name_course') }}" value="{{ $courses->name }}">
                         </div>
 
                         <div class="form-group">
                             <label>{{ __('messages.time') }}</label>
-                            <input name="time" readonly type="text" class="form-control" id="exampleInputEmail1" placeholder="{{ __('messages.time') }}" value="{{$courses->time}}">
+                            <input name="time" readonly type="text" class="form-control" id="exampleInputEmail1" placeholder="{{ __('messages.time') }}" value="{{ $courses->time }}">
                         </div>
                         <div class="form-group">
                             <label>{{ __('messages.description') }}</label>
-                            <textarea name="description" readonly class="form-control" placeholder="{{ __('messages.description') }}" rows="10">
-                                {{$courses->description}}
-                            </textarea>
+                            <textarea name="description" readonly class="form-control" placeholder="{{ __('messages.description') }}" rows="10">{{ $courses->description }}</textarea>
                         </div>
                         <div class="form-group">
                             <label>{{__('messages.course_image')}}</label>

@@ -18,13 +18,13 @@
                             <div class="text-danger">
                                 <ul>
                                     @foreach($errors->all() as $e)
-                                        <li>{{$e}}</li>
+                                        <li>{{ $e }}</li>
                                     @endforeach
                                 </ul>
                             </div>
                             <div class="form-group">
-                                <label>{{ __('messages.title_subject')}}</label>
-                                <input name="title" type="text" class="form-control" placeholder="{{ __('messages.title_subject') }}" value="{{$subject->title}}">
+                                <label>{{ __('messages.title_subject') }}</label>
+                                <input name="title" type="text" class="form-control" placeholder="{{ __('messages.title_subject') }}" value="{{ $subject->title }}">
                             </div>
                             <div class="form-group">
                                 <div class="">
@@ -33,7 +33,7 @@
                                     <br>
                                     <select name="course_id" class="custom-select form-control" id="inputGroupSelect02">
                                         @foreach($courses as $course)
-                                            <option value="{{$course->id}}">{{$course->name}}</option>
+                                            <option value="{{ $course->id }}">{{ $course->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>

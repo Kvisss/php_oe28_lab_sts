@@ -19,12 +19,14 @@
         <tbody>
         @foreach($users as $key => $value)
             <tr>
-                <td>{{$key +1}}</td>
-                <td>{{$value->username}}</td>
-                <td>{{$value->full_name}}</td>
-                <td>{{$value->created_at}}</td>
+                <td>{{ $key +1 }}</td>
                 <td>
-                    <a href="{{route('courseuser.store', $value->id)}}" class="btn btn-sm btn-info "><i class="fa fa-plus-square"></i></a>
+                    {{ $value->username }}<input class="invisible" name="username" value="{{ $value->username }}">
+                </td>
+                <td>{{ $value->full_name }}</td>
+                <td>{{ $value->created_at }}</td>
+                <td>
+                    <a href="{{ route('courseuser.store') }}" class="btn btn-sm btn-info "><i class="fa fa-plus-square"></i></a>
                 </td>
             </tr>
         @endforeach

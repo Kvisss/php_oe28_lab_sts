@@ -22,16 +22,16 @@
         <tbody>
         @foreach($courses as $key => $value)
             <tr>
-                <td>{{$key +1}}</td>
-                <td>{{$value->name}}</td>
-                <td>{{$value->time}}</td>
-                <td>{{$value->created_at}}</td>
+                <td>{{ $key +1}}</td>
+                <td>{{ $value->name }}</td>
+                <td>{{ $value->time }}</td>
+                <td>{{ $value->created_at}}</td>
                 <td>
-                    <a href="{{route('courseuser.show', $value->id)}}" class="btn btn-sm btn-info"><i class="fa fa-users"></i></a>
-                    <a href="{{route('courseuser.create')}}" class="btn btn-sm btn-warning"><i class="fa fa-user-plus" aria-hidden="true"></i></a>
-                    <a href="{{route('courses.show', $value->id)}}" class="btn btn-sm btn-success"><i class="fas fa-eye"></i></a>
-                    <a href="{{route('courses.edit', $value->id)}}" class="btn btn-sm btn-primary"><i class="fas fa-edit"></i></a>
-                    <form class="" action="{{route('courses.destroy', $value->id)}}" method="post">
+                    <a href="{{ route('courseuser.show', $value->id) }}" class="btn btn-sm btn-info"><i class="fa fa-users"></i></a>
+                    <a href="{{ route('courseuser.create') }}" class="btn btn-sm btn-warning"><i class="fa fa-user-plus" aria-hidden="true"></i></a>
+                    <a href="{{ route('courses.show', $value->id) }}" class="btn btn-sm btn-success"><i class="fas fa-eye"></i></a>
+                    <a href="{{ route('courses.edit', $value->id) }}" class="btn btn-sm btn-primary"><i class="fas fa-edit"></i></a>
+                    <form class="" action="{{ route('courses.destroy', $value->id) }}" method="post">
                         @csrf
                         @method('delete')
                         <button type="submit" class="btn btn-danger btn-sm">

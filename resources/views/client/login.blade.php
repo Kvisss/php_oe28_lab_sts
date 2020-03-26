@@ -17,7 +17,7 @@
                             <input name="username" type="text" placeholder="{{ __('messages.username') }}">
                             <label class="text-danger">
                                 @error('username')
-                                {{$message}}
+                                    {{$message}}
                                 @enderror
                             </label>
                         </div>
@@ -26,7 +26,7 @@
                             <input name="password" type="password" placeholder="{{ __('messages.password') }}">
                             <label class="text-danger">
                                 @error('password')
-                                {{$message}}
+                                    {{$message}}
                                 @enderror
                             </label>
                         </div>
