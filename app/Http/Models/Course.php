@@ -29,4 +29,9 @@ class Course extends Model
     {
         return $this->hasManyThrough(Task::class, Subject::class);
     }
+
+    public function users()
+    {
+
+    }
 }

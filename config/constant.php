@@ -24,8 +24,9 @@ return [
     */
 
     'status' => [
-        'active' => 1,
-        'inactive' => 0,
+        'active' => 2,
+        'inactive' => 1,
+        'done' => 3,
 
     ],
 ];

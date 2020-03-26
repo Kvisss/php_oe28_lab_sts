@@ -20,14 +20,13 @@ class SubjectController extends Controller
      */
     public function index()
     {
-//        $subjects = Subject::find(5)->course()->get();
-//        $subjects = Subject::all();
-//        dd($subjects);
-//        $course = Subject::find($subjects->id)->course()->get();
-        $subjects = DB::table('subjects')
-            ->join('courses', 'subjects.course_id', '=', 'courses.id')
-            ->select('subjects.id as subject_id', 'subjects.title', 'courses.name', 'subjects.created_at')
-            ->get();
+        $subjects = Course::find(5)->subject;
+//        dd($course);
+
+//        $subjects = DB::table('subjects')
+//            ->join('courses', 'subjects.course_id', '=', 'courses.id')
+//            ->select('subjects.id as subject_id', 'subjects.title', 'courses.name', 'subjects.created_at')
+//            ->get();
 
         return view('admin.subjects.index-subject', compact('subjects'));
     }

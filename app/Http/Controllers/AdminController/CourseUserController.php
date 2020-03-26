@@ -4,6 +4,7 @@ namespace App\Http\Controllers\AdminController;
 
 use App\Http\Controllers\Controller;
 use App\Http\Models\Course;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Models\User;
@@ -41,7 +42,12 @@ class CourseUserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = DB::table('users')
+            ->where('username', '=', $request->username);
+        dd($data);
+        DB::table('course_user')
+            ->insert($data);
+        return redirect()->back();
     }
 
     /**
