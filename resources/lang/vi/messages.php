@@ -3,7 +3,7 @@
 return [
     'course' => 'Khóa học',
     'subject' => 'Bài giảng',
-    'task' => 'Nội dung bài học',
+    'task' => 'Bài học',
     'description' => 'Mô tả khóa học',
     'creator' => 'Người tạo',
     'time' => 'Thời gian',
@@ -51,6 +51,15 @@ return [
     'create_subject' => 'Thêm bài giảng',
     'title_subject' => 'Tên bài giảng',
     'list_subject' => 'Danh sách bài giảng',
-    
+    'edit_subject' => 'Sủa bài giảng',
+    'user_add' => 'Thêm tài khoản mới',
+    'chose' => 'Chọn',
+    'user' => 'Tài khoản',
+    'active_course_fail' => 'Kích hoạt thất bại, nguời dùng đang học khóa học khác',
+    'task_name' => 'Tên bài học',
+    'task_content' => 'Nội dung bài học',
+    'task_edit' => 'Sửa khóa học',
+    'task_create' => 'Tạo bài học mới',
+
 
 ];

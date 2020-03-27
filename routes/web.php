@@ -21,6 +21,16 @@ Route::group(['prefix' => 'admincp'], function () {
     Route::resource('courseuser', 'AdminController\CourseUserController');
 
     Route::resource('subjects', 'AdminController\SubjectController');
+
+    Route::post('subject', 'AdminController\SubjectController@showList')->name('showlist');
+
+    Route::resource('users', 'AdminController\UserController');
+
+    Route::resource('tasks', 'AdminController\TaskController');
+
+    Route::get('report', 'AdminController\TaskController@getReport')->name('report');
+
+
 });
 
 Route::get('/', 'Auth\LoginController@index')->name('indexLogin');

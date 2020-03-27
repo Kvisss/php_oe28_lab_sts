@@ -22,7 +22,7 @@
                         <div class="card-body">
                             <div class="form-group">
                                 <label>{{ __('messages.name_course') }}</label>
-                                <input name="name" type="text" class="form-control" placeholder="{{ __('messages.name_course') }}" value="">
+                                <input name="name" type="text" class="form-control" placeholder="{{ trans('messages.name_course') }}" value="">
                             </div>
                             <div class="form-group" id="form-profile">
                                 <input type="file" name="image" id="course-img" class="btn btn-outline-info">
@@ -51,7 +51,7 @@
             <div class="row justify-content-center">
                 <div class="col-md-2">
                     <button type="submit" class="btn btn-primary">{{ __('messages.save') }}</button>
-                    <a href="#" class="btn btn-danger">{{ __('messages.cancel') }}</a>
+                    <a href="{{ route('courses.index') }}" class="btn btn-danger">{{ __('messages.cancel') }}</a>
                 </div>
             </div>
         </form>

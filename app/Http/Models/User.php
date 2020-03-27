@@ -25,4 +25,5 @@ class User extends Users
     {
         return $this->belongsToMany(Course::class)->withPivot('start_time', 'end_time', 'status');
     }
+
 }

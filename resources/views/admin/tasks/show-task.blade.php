@@ -3,11 +3,11 @@
 @section('title', 'list')
 
 @section('content-header')
-    {{ __('messages.list_course')}}
+    {{ __('messages.task')}}
 @stop
 @section('content')
-    <a href="{{route('courses.create')}}">
-        {{__('messages.create_new_course')}}
+    <a href="{{route('tasks.create')}}">
+        {{__('messages.task_create')}}
     </a>
     <table id="example" class="table table-striped table-bordered">
         <thead>
@@ -20,17 +20,15 @@
         </tr>
         </thead>
         <tbody>
-        @foreach($courses as $key => $value)
+        @foreach($tasks as $key => $value)
             <tr>
                 <td>{{ $key +1}}</td>
-                <td>{{ $value->name }}</td>
-                <td>{{ $value->time }}</td>
+                <td>{{ $value->title }}</td>
+                <td>{{ $value->content }}</td>
                 <td>{{ $value->created_at}}</td>
                 <td>
-                    <a href="{{ route('courseuser.show', $value->id) }}" class="btn btn-sm btn-info"><i class="fa fa-users"></i></a>
-                    <a href="{{ route('courseuser.create', $value->id) }}" class="btn btn-sm btn-warning"><i class="fa fa-user-plus" aria-hidden="true"></i></a>
                     <a href="{{ route('courses.show', $value->id) }}" class="btn btn-sm btn-success"><i class="fas fa-eye"></i></a>
-                    <a href="{{ route('courses.edit', $value->id) }}" class="btn btn-sm btn-primary"><i class="fas fa-edit"></i></a>
+                    <a href="{{ route('tasks.edit', $value->id) }}" class="btn btn-sm btn-primary"><i class="fas fa-edit"></i></a>
                     <form class="" action="{{ route('courses.destroy', $value->id) }}" method="post">
                         @csrf
                         @method('delete')

@@ -6,6 +6,13 @@
     {{ __('messages.user_of_course') }}
 @stop
 @section('content')
+    <div class="text-danger">
+        <ul>
+        @if($errors->any())
+            {{__('messages.active_course_fail')}}
+        @endif
+        </ul>
+    </div>
     <div class="container-fluid">
         <table id="example" class="table table-striped table-bordered">
             <thead>
@@ -21,32 +28,32 @@
             <tbody>
             @foreach($users as $key => $value)
                 <tr>
-                    <td>{{$key +1}}</td>
-                    <td>{{$value->full_name}}</td>
-                    <td>{{$value->email}}</td>
-                    <td>{{$value->phone}}</td>
+                    <td>{{ $key +1 }}</td>
+                    <td>{{ $value->full_name }}</td>
+                    <td>{{ $value->email }}</td>
+                    <td>{{ $value->phone }}</td>
                     <td>
                         @if($value->status == config('constant.status.active'))
-                            {{__('messages.status_active')}}
+                            <label class="badge badge-success">{{ __('messages.status_active') }}</label>
 
                         @else
-                            {{__('messages.status_inactive')}}
+                            <label class="badge badge-danger">{{ __('messages.status_inactive') }}</label>
                         @endif
                     </td>
                     <td>
-                        <form action="{{route('courseuser.edit', $value->course_user_id)}}" method="post">
+                        <form action="{{ route('courseuser.edit', $value->course_user_id) }}" method="post">
                             @csrf
                             @method('get')
-                            <button class="btn btn-sm btn-warning">
+
                                 @if($value->status == config('constant.status.active'))
-                                    {{__('messages.action_deactive')}}
+                                <button class="btn btn-sm btn-warning">{{ __('messages.action_deactive') }}</button>
 
                                 @else
-                                    {{__('messages.action_active')}}
+                                <button class="btn btn-sm btn-success">{{ __('messages.action_active') }}</button>
                                 @endif
-                            </button>
+
                         </form>
-                        <form class="" action="{{route('courseuser.destroy', $value->course_user_id)}}" method="post">
+                        <form class="" action="{{ route('courseuser.destroy', $value->course_user_id) }}" method="post">
                             @csrf
                             @method('delete')
                             <button type="submit" class="btn btn-danger btn-sm">

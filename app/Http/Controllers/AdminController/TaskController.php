@@ -3,15 +3,14 @@
 namespace App\Http\Controllers\AdminController;
 
 use App\Http\Controllers\Controller;
-use App\Http\Models\Course;
 use App\Http\Models\Subject;
-use App\Http\Requests\SubjectRequest;
-use Illuminate\Database\Eloquent\Model;
+use App\Http\Models\Task;
+use App\Http\Models\UserTask;
+use App\Http\Requests\TaskRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-
-class SubjectController extends Controller
+class TaskController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,11 +19,11 @@ class SubjectController extends Controller
      */
     public function index()
     {
-//        $subjects = Course::find(5)->subject;
-            $courses = Course::all();
+        $subjects  = Subject::all();
 
-        return view('admin.subjects.index-subject', compact('courses'));
+        return view('admin.subjects.show-subject', compact('subjects'));
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -33,8 +32,8 @@ class SubjectController extends Controller
      */
     public function create()
     {
-        $courses = Course::all();
-        return view('admin.subjects.add-form', compact('courses'));
+        $subjects = Subject::all();
+        return view('admin.tasks.add-form', compact('subjects'));
     }
 
     /**
@@ -43,14 +42,16 @@ class SubjectController extends Controller
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(SubjectRequest $request)
+    public function store(TaskRequest $request)
     {
-        Subject::create([
+        Task::create([
             'title' => $request->title,
-            'course_id' => $request->course_id,
+            'content' => $request->content,
+            'subject_id' => $request->subject_id,
+
         ]);
 
-        return redirect()->route('subjects.index');
+        return redirect()->route('tasks.index');
     }
 
     /**
@@ -61,9 +62,10 @@ class SubjectController extends Controller
      */
     public function show($id)
     {
-//        $subjects = Course::find(5)->subject;
-//
-//        return view('admin.subjects.index-subject', compact('subjects', 'courses'));
+        $tasks = Task::where('subject_id', '=', $id)
+            ->get();
+
+        return view('admin.tasks.show-task', compact('tasks'));
     }
 
     /**
@@ -74,12 +76,11 @@ class SubjectController extends Controller
      */
     public function edit($id)
     {
-        $courses = Course::all();
 
-        $subject = Subject::findOrFail($id)
+        $task = Task::where('id', '=', $id)
             ->first();
-
-        return view('admin.subjects.edit-form', compact('subject', 'courses'));
+//dd($task);
+        return view('admin.tasks.edit-form', compact('task'));
     }
 
     /**
@@ -89,14 +90,14 @@ class SubjectController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(SubjectRequest $request, $id)
+    public function update(TaskRequest $request, $id)
     {
-        Subject::find($id)
-            ->update([
-                'title' => $request->title,
-                'course_id' => $request->course_id,
-            ]);
-        return redirect()->route('subjects.index');
+        Task::findOrFail($id)
+        ->update([
+            'title' => $request->title,
+            'content' => $request->contents,
+        ]);
+        return redirect()->back();
     }
 
     /**
@@ -107,19 +108,11 @@ class SubjectController extends Controller
      */
     public function destroy($id)
     {
-        Subject::findOrFail($id)
-            ->delete();
-
-        return redirect()->route('subjects.index');
+        //
     }
 
-    public function showList(Request $request)
-    {
+    public function getReport(){
 
-        $subjects = Course::find($request->course_id)->subject;
-//dd($subjects);
-        return view('admin.subjects.show-subject', compact('subjects'));
+        return UserTask::getReport(1, 2);
     }
-
-
 }

@@ -8,6 +8,8 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Models\User;
+use Illuminate\Support\Facades\Auth;
+
 
 class CourseUserController extends Controller
 {
@@ -28,10 +30,12 @@ class CourseUserController extends Controller
      */
     public function create()
     {
-        $users = User::where('role_id', '=', config('constant.role.user'))
-            ->get();
+//        dd(123);
+//        $users = User::where('role_id', '=', config('constant.role.user'))
+//            ->get();
+        $courses = Course::where('creator_id', (Auth::user()->id))->get();
 
-        return view('admin.courses.add-new-user-to-course', compact('users'));
+        return view('admin.courses.add-new-user-to-course', compact('courses'));
     }
 
     /**
@@ -42,12 +46,25 @@ class CourseUserController extends Controller
      */
     public function store(Request $request)
     {
-        $data = DB::table('users')
-            ->where('username', '=', $request->username);
-        dd($data);
+
+        $user_id = DB::table('users')
+            ->where('username', '=', $request->username)
+            ->select('id')
+            ->first();
+//        dd($user_id);
+        $start_time = Carbon::now('Asia/Ho_Chi_Minh');
         DB::table('course_user')
-            ->insert($data);
-        return redirect()->back();
+            ->insert([
+                'user_id' => $user_id->id,
+                'course_id' => $request->course_id,
+                'status' => config('constant.status.inactive'),
+                'start_time' => $start_time->toDateString(),
+                'end_time' => $start_time->addDays(2),
+
+            ]);
+
+        return redirect()->route('courses.index');
+
     }
 
     /**
@@ -76,11 +93,12 @@ class CourseUserController extends Controller
      */
     public function edit($id)
     {
+        $checkStatus = false;
         $user = DB::table('course_user')
             ->where('id', '=', $id)
             ->get();
-
         if ($user) {
+
             foreach ($user as $status) {
                 if ($status->status == config('constant.status.inactive')) {
                     DB::table('course_user')
@@ -96,6 +114,7 @@ class CourseUserController extends Controller
                     return redirect()->back();
                 }
             }
+
         }
 
         return null;
@@ -135,6 +154,11 @@ class CourseUserController extends Controller
         }
         return null;
 
+    }
+
+    public function showUser($id)
+    {
+        dd($id);
     }
 
 }

@@ -29,4 +29,21 @@ return [
         'done' => 3,
 
     ],
+
+    /*
+    | Status of user in course
+    */
+
+    'password' => [
+        'default' => '123456',
+    ],
+
+    'phone' => [
+        'default' => 0,
+    ],
+
+    'avatar' => [
+        'default' => '',
+    ],
+
 ];

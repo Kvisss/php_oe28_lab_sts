@@ -3,7 +3,7 @@
 @section('title', 'Add subject')
 
 @section('content-header')
-    {{ __('messages.create_subject') }}
+    {{ __('messages.edit_subject') }}
 @stop
 @section('content')
     <div class="container-fluid">
@@ -29,7 +29,6 @@
                             <div class="form-group">
                                 <div class="">
                                     <label>{{ __('messages.name_course') }}</label>
-                                    {{--                                    <input name="name" type="text" class="form-control" placeholder="{{ __('messages.name_course') }}" value="">--}}
                                     <br>
                                     <select name="course_id" class="custom-select form-control" id="inputGroupSelect02">
                                         @foreach($courses as $course)
@@ -45,7 +44,7 @@
             <div class="row justify-content-center">
                 <div class="col-md-2">
                     <button type="submit" class="btn btn-primary">{{ __('messages.save') }}</button>
-                    <a href="#" class="btn btn-danger">{{ __('messages.cancel') }}</a>
+                    <a href="{{ route('subjects.index') }}" class="btn btn-danger">{{ __('messages.cancel') }}</a>
                 </div>
             </div>
         </form>

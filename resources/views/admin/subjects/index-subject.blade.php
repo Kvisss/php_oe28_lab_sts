@@ -6,36 +6,24 @@
     {{ __('messages.list_course')}}
 @stop
 @section('content')
-    <table id="example" class="table table-striped table-bordered">
-        <thead>
-        <tr>
-            <th>{{ __('messages.number') }}</th>
-            <th>{{ __('messages.title_subject') }}</th>
-            <th>{{ __('messages.course') }}</th>
-            <th>{{ __('messages.created_at') }}</th>
-            <th>{{ __('messages.action') }}</th>
-
-        </tr>
-        </thead>
-        <tbody>
-        @foreach($subjects as $key => $value)
-            <tr>
-                <td>{{$key +1}}</td>
-                <td>{{$value->title}}</td>
-                <td>{{$value->course->name}}</td>
-                <td>{{$value->created_at}}</td>
-                <td>
-                    <a href="{{ route('subjects.edit', $value->id) }}" class="btn btn-sm btn-primary"><i class="fas fa-edit"></i></a>
-                    <form class="" action="{{ route('courses.destroy', $value->id) }}" method="post">
-                        @csrf
-                        @method('delete')
-                        <button type="submit" class="btn btn-danger btn-sm">
-                            <i class="fa fa-trash"></i>
-                        </button>
-                    </form>
-                </td>
-            </tr>
-        @endforeach
-        </tbody>
-    </table>
+    <a href="{{ route('subjects.create') }}">{{ __('messages.create_subject') }}</a>
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-md-6 justify-content-center">
+                <form action="{{ route('showlist') }}" method="post">
+                    @csrf
+                    <div class="input-group col-md-12">
+                        <select name="course_id" class="custom-select" id="inputGroupSelect02">
+                            @foreach( $courses as $course )
+                                <option value="{{ $course->id }}">{{ $course->name }}</option>
+                            @endforeach
+                        </select>
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary" type="submit">{{ __('messages.chose') }}</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 @endsection
